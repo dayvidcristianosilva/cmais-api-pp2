@@ -32,15 +32,15 @@ public class MercadoRequest {
     public Mercado build() {
 
         return Mercado.builder()
-            .NomeDoEmpreendimento(NomeDoEmpreendimento)
-            .CNPJ(CNPJ)
-            .TipoDeEmpreendimento(TipoDeEmpreendimento)
-            .TelefoneParaContato(TelefoneParaContato)
-            .Endereco(Endereco)
-            .RedesSocias(RedesSocias)
-            .NomeCompletoDoResponsavelPorCadastrar(NomeCompletoDoResponsavelPorCadastrar)
-            .Cargo(Cargo)
-            .SenhaDeAcesso(SenhaDeAcesso)
-            .build();
-      }
+                .NomeDoEmpreendimento(NomeDoEmpreendimento)
+                .CNPJ(CNPJ)
+                .TipoDeEmpreendimento(TipoDeEmpreendimento)
+                .TelefoneParaContato(TelefoneParaContato)
+                .Endereco(Endereco)
+                .RedesSocias(RedesSocias)
+                .NomeCompletoDoResponsavelPorCadastrar(NomeCompletoDoResponsavelPorCadastrar)
+                .Cargo(Cargo)
+                .SenhaDeAcesso(SenhaDeAcesso)
+                .build();
+    }
 }
