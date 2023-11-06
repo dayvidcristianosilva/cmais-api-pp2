@@ -1,8 +1,8 @@
-package br.com.ifpe.cmaisapipp2.api.ong;
+package br.com.ifpe.cmaisapipp2.api.instituicao;
 
 import java.time.LocalDate;
 
-import br.com.ifpe.cmaisapipp2.modelo.ong.Ong;
+import br.com.ifpe.cmaisapipp2.modelo.instituicao.Instituicao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class OngRequest {
+public class InstituicaoRequest {
 
   private String NomeInstituicao;
 
@@ -43,9 +43,9 @@ public class OngRequest {
 
   private String SenhaAcesso;
 
-  public Ong build() {
+  public Instituicao build() {
 
-    return Ong.builder()
+    return Instituicao.builder()
         .NomeInstituicao(NomeInstituicao)
         .CNPJInstituicao(CNPJInstituicao)
         .EnderecoInstituicao(EnderecoInstituicao)

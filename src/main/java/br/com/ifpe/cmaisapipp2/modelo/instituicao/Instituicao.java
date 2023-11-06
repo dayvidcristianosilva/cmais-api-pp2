@@ -1,4 +1,4 @@
-package br.com.ifpe.cmaisapipp2.modelo.ong;
+package br.com.ifpe.cmaisapipp2.modelo.instituicao;
 
 import java.time.LocalDate;
 
@@ -21,10 +21,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Ong")
+@Table(name = "instituicao")
 @Where(clause = "habilitado = true")
 
-public class Ong extends EntidadeAuditavel {
+public class Instituicao extends EntidadeAuditavel {
 
   @Column
   private String NomeInstituicao;
