@@ -40,6 +40,7 @@ public class InstituicaoService {
     instituicao.setCNPJInstituicao(instituicaoAlterado.getCNPJInstituicao());
     instituicao.setEnderecoInstituicao(instituicaoAlterado.getEnderecoInstituicao());
     instituicao.setTelefoneInstituicao(instituicaoAlterado.getTelefoneInstituicao());
+    instituicao.setFinalidade(instituicaoAlterado.getFinalidade());
     instituicao.setEmailInstituicao(instituicaoAlterado.getEmailInstituicao());
     instituicao.setRedesSociaisIntituicao(instituicaoAlterado.getRedesSociaisIntituicao());
     instituicao.setDataConstituicao(instituicaoAlterado.getDataConstituicao());

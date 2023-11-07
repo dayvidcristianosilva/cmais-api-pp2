@@ -21,7 +21,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Produto")
+@Table(name = "produto")
 @Where(clause = "habilitado = true")
 public class Produto extends EntidadeAuditavel {
 

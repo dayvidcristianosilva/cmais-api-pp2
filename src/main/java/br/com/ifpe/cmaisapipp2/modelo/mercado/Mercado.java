@@ -19,7 +19,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "Mercado")
+@Table(name = "mercado")
 @Where(clause = "habilitado = true")
 public class Mercado extends EntidadeAuditavel  {
     

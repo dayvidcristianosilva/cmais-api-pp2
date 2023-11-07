@@ -21,7 +21,9 @@ public class InstituicaoRequest {
 
   private String EnderecoInstituicao;
 
-  private String TelefoneInstituicao;
+  private int TelefoneInstituicao;
+
+  private int Finalidade;
 
   private LocalDate DataConstituicao;
 
@@ -33,9 +35,9 @@ public class InstituicaoRequest {
 
   private String NomeResponsavel;
 
-  private String CpfReponsavel;
+  private int CpfReponsavel;
 
-  private String TelefoneResponsavel;
+  private int TelefoneResponsavel;
 
   private String EmailResponsavel;
 
