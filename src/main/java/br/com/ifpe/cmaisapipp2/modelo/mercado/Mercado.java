@@ -25,35 +25,30 @@ public class Mercado extends EntidadeAuditavel  {
     
 
     @Column
-    private String NomeDoEmpreendimento;
+    private String nomeEmpreendimento;
+
+     @Column
+    private String tipoEmpreendimento;
 
 
      @Column
-    private Boolean CNPJ;
+    private int telefoneContato;
 
 
      @Column
-    private String TipoDeEmpreendimento;
+    private String endereco;
 
 
      @Column
-    private int TelefoneParaContato;
-
-
-     @Column
-    private String Endereco;
-
-
-     @Column
-    private String RedesSocias;
+    private String redesSociais;
 
 
       @Column
-    private String NomeCompletoDoResponsavelPorCadastrar;
+    private String nomeCompletoResponsavel;
 
 
       @Column
-    private String Cargo;
+    private String cargoResponsavel;
 
 
       @Column

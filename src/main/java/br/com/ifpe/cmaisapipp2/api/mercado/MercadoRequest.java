@@ -11,35 +11,32 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MercadoRequest {
-    private String NomeDoEmpreendimento;
+    private String nomeEmpreendimento;
 
-    private Boolean CNPJ;
+    private String  tipoEmpreendimento;
 
-    private String TipoDeEmpreendimento;
+    private int telefoneContato;
 
-    private int TelefoneParaContato;
+    private String endereco;
 
-    private String Endereco;
+    private String redesSociais;
 
-    private String RedesSocias;
+    private String nomeCompletoResponsavel;
 
-    private String NomeCompletoDoResponsavelPorCadastrar;
-
-    private String Cargo;
+    private String cargoResponsavel;
 
     private String SenhaDeAcesso;
 
     public Mercado build() {
 
         return Mercado.builder()
-                .NomeDoEmpreendimento(NomeDoEmpreendimento)
-                .CNPJ(CNPJ)
-                .TipoDeEmpreendimento(TipoDeEmpreendimento)
-                .TelefoneParaContato(TelefoneParaContato)
-                .Endereco(Endereco)
-                .RedesSocias(RedesSocias)
-                .NomeCompletoDoResponsavelPorCadastrar(NomeCompletoDoResponsavelPorCadastrar)
-                .Cargo(Cargo)
+                .nomeEmpreendimento(nomeEmpreendimento)
+                .tipoEmpreendimento( tipoEmpreendimento)
+                .telefoneContato(telefoneContato)
+                .endereco(endereco)
+                .redesSociais(redesSociais)
+                .nomeCompletoResponsavel(nomeCompletoResponsavel)
+                .cargoResponsavel(cargoResponsavel)
                 .SenhaDeAcesso(SenhaDeAcesso)
                 .build();
     }
