@@ -2,8 +2,6 @@ package br.com.ifpe.cmaisapipp2.api.produto;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import br.com.ifpe.cmaisapipp2.modelo.produto.Produto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,34 +12,31 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class ProdutoRequest {
+  private int CodigoDeBarrasDoProduto;
 
-    private String codigoDeBarras;
+  private String Descrição;
 
-    private String descricao;
+  private LocalDate DataDeFabricação;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataDeFabricacao;
+  private LocalDate DataDeValidade;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataDeValidade;
+  private int Quantidade;
 
-    private String quantidade;
+  private String Observações;
 
-    private String observacao;
+  private String AnexeAquiUmaOuMaisImagensDoProduto;
 
-    public Produto build() {
+  public Produto build() {
 
-        return Produto.builder()
-                .codigoDeBarras(codigoDeBarras)
-                .descricao(descricao)
-                .dataDeFabricacao(dataDeFabricacao)
-                .dataDeValidade(dataDeValidade)
-                .quantidade(quantidade)
-                .observacao(observacao)
-                .build();
-
-    }
-
+    return Produto.builder()
+        .CodigoDeBarrasDoProduto(CodigoDeBarrasDoProduto)
+        .Descrição(Descrição)
+        .DataDeFabricação(DataDeFabricação)
+        .DataDeValidade(DataDeValidade)
+        .Quantidade(Quantidade)
+        .Observações(Observações)
+        .AnexeAquiUmaOuMaisImagensDoProduto(AnexeAquiUmaOuMaisImagensDoProduto)
+        .build();
+  }
 }
