@@ -21,39 +21,29 @@ import lombok.Setter;
 @Entity
 @Table(name = "mercado")
 @Where(clause = "habilitado = true")
-public class Mercado extends EntidadeAuditavel  {
-    
+public class Mercado extends EntidadeAuditavel {
 
     @Column
     private String nomeEmpreendimento;
 
-     @Column
+    @Column
     private String tipoEmpreendimento;
 
+    @Column
+    private String telefoneContato; 
 
-     @Column
-    private int telefoneContato;
-
-
-     @Column
+    @Column
     private String endereco;
 
-
-     @Column
+    @Column
     private String redesSociais;
 
-
-      @Column
+    @Column
     private String nomeCompletoResponsavel;
 
-
-      @Column
+    @Column
     private String cargoResponsavel;
 
-
-      @Column
+    @Column
     private String SenhaDeAcesso;
-
-
 }
-

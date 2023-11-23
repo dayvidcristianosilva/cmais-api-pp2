@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 public class MercadoRequest {
     private String nomeEmpreendimento;
 
-    private String  tipoEmpreendimento;
+    private String tipoEmpreendimento;
 
-    private int telefoneContato;
+    private String telefoneContato; 
 
     private String endereco;
 
@@ -28,10 +28,9 @@ public class MercadoRequest {
     private String SenhaDeAcesso;
 
     public Mercado build() {
-
         return Mercado.builder()
                 .nomeEmpreendimento(nomeEmpreendimento)
-                .tipoEmpreendimento( tipoEmpreendimento)
+                .tipoEmpreendimento(tipoEmpreendimento)
                 .telefoneContato(telefoneContato)
                 .endereco(endereco)
                 .redesSociais(redesSociais)

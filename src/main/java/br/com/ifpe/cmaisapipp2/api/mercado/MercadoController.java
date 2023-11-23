@@ -65,8 +65,7 @@ public class MercadoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Mercado> update(@PathVariable("id") Long id, @RequestBody MercadoRequest request) {
-
+    public ResponseEntity<Mercado> update(@PathVariable("id") Long id, @RequestBody @Valid MercadoRequest request) {
         mercadoService.update(id, request.build());
         return ResponseEntity.ok().build();
     }

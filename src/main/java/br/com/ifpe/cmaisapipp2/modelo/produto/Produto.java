@@ -15,20 +15,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-<<<<<<< HEAD
 @Entity
 @Table(name = "Produto")
 @Where(clause = "habilitado = true")
-
-=======
->>>>>>> origin/alex
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-<<<<<<< HEAD
-
 public class Produto extends EntidadeAuditavel {
 
     @Column
@@ -43,38 +37,11 @@ public class Produto extends EntidadeAuditavel {
     @Column
     private LocalDate dataDeValidade;
 
-     @Column
-    private String quantidade;
+    @Column
+    private int quantidade;
 
     @Column
     private String observacao;
-    
-=======
-@Entity
-@Table(name = "produto")
-@Where(clause = "habilitado = true")
-public class Produto extends EntidadeAuditavel {
 
-  @Column
-  private int CodigoDeBarrasDoProduto;
 
-  @Column
-  private String Descrição;
-
-  @Column
-  private LocalDate DataDeFabricação;
-
-  @Column
-  private LocalDate DataDeValidade;
-
-  @Column
-  private int Quantidade;
-
-  @Column
-  private String Observações;
-
-  @Column
-  private String AnexeAquiUmaOuMaisImagensDoProduto;
-
->>>>>>> origin/alex
 }
