@@ -36,10 +36,10 @@ public class Instituicao extends EntidadeAuditavel {
   private String EnderecoInstituicao;
 
   @Column
-  private int TelefoneInstituicao;
+  private String TelefoneInstituicao;
 
   @Column
-  private int Finalidade;
+  private String Finalidade;
 
   @Column
   private LocalDate DataConstituicao;
@@ -57,10 +57,10 @@ public class Instituicao extends EntidadeAuditavel {
   private String NomeResponsavel;
 
   @Column
-  private int CpfReponsavel;
+  private String CpfReponsavel;
 
   @Column
-  private int TelefoneResponsavel;
+  private String TelefoneResponsavel;
 
   @Column
   private String EmailResponsavel;

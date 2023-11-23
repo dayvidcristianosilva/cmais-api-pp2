@@ -27,7 +27,7 @@ public class ProdutoRequest {
   @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate dataDeValidade;
 
-  private int quantidade;
+  private String quantidade;
 
   private String observacoes;
 
