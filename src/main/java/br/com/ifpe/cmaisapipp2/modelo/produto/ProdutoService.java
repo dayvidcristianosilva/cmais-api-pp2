@@ -10,13 +10,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ProdutoService {
-<<<<<<< HEAD
+
     @Autowired
     private ProdutoRepository repository;
 
     @Transactional
     public Produto save(Produto produto) {
-
         produto.setHabilitado(Boolean.TRUE);
         produto.setVersao(1L);
         produto.setDataCriacao(LocalDate.now());
@@ -24,87 +23,36 @@ public class ProdutoService {
     }
 
     public List<Produto> findAll() {
-
         return repository.findAll();
     }
 
     public Produto findById(Long id) {
-
-        return repository.findById(id).get();
+        return repository.findById(id).orElse(null);
     }
 
     @Transactional
     public void update(Long id, Produto produtoAlterado) {
+        Produto produto = repository.findById(id).orElse(null);
+        if (produto != null) {
+            produto.setCodigoDeBarras(produtoAlterado.getCodigoDeBarras());
+            produto.setDescricao(produtoAlterado.getDescricao());
+            produto.setDataDeFabricacao(produtoAlterado.getDataDeFabricacao());
+            produto.setDataDeValidade(produtoAlterado.getDataDeValidade());
+            produto.setQuantidade(produtoAlterado.getQuantidade());
+            produto.setObservacao(produtoAlterado.getObservacao());
 
-        Produto produto = repository.findById(id).get();
-        produto.setCodigoDeBarras(produtoAlterado.getCodigoDeBarras());
-        produto.setDescricao(produtoAlterado.getDescricao());
-        produto.setDataDeFabricacao(produtoAlterado.getDataDeFabricacao());
-        produto.setDataDeValidade(produtoAlterado.getDataDeValidade());
-        produto.setQuantidade(produtoAlterado.getQuantidade());
-        produto.setObservacao(produtoAlterado.getObservacao());
-
-        produto.setVersao(produto.getVersao() + 1);
-        repository.save(produto);
+            produto.setVersao(produto.getVersao() + 1);
+            repository.save(produto);
+        }
     }
 
     @Transactional
     public void delete(Long id) {
-
-        Produto produto = repository.findById(id).get();
-        produto.setHabilitado(Boolean.FALSE);
-        produto.setVersao(produto.getVersao() + 1);
-
-        repository.save(produto);
+        Produto produto = repository.findById(id).orElse(null);
+        if (produto != null) {
+            produto.setHabilitado(Boolean.FALSE);
+            produto.setVersao(produto.getVersao() + 1);
+            repository.save(produto);
+        }
     }
 }
-=======
-  @Autowired
-  private ProdutoRepository repository;
-
-  @Transactional
-  public Produto save(Produto produto) {
-
-    produto.setHabilitado(Boolean.TRUE);
-    produto.setVersao(1L);
-    produto.setDataCriacao(LocalDate.now());
-    return repository.save(produto);
-  }
-
-  public List<Produto> findAll() {
-
-    return repository.findAll();
-  }
-
-  public Produto findById(Long id) {
-
-    return repository.findById(id).get();
-  }
-
-  @Transactional
-  public void update(Long id, Produto produtoAlterado) {
-
-    Produto produto = repository.findById(id).get();
-    produto.setCodigoDeBarrasDoProduto(produtoAlterado.getCodigoDeBarrasDoProduto());
-    produto.setDescrição(produtoAlterado.getDescrição());
-    produto.setDataDeFabricação(produtoAlterado.getDataDeFabricação());
-    produto.setDataDeValidade(produtoAlterado.getDataDeValidade());
-    produto.setQuantidade(produtoAlterado.getQuantidade());
-    produto.setObservações(produtoAlterado.getObservações());
-    produto.setAnexeAquiUmaOuMaisImagensDoProduto(produtoAlterado.getAnexeAquiUmaOuMaisImagensDoProduto());
-
-    produto.setVersao(produto.getVersao() + 1);
-    repository.save(produto);
-  }
-
-  @Transactional
-  public void delete(Long id) {
-
-    Produto produto = repository.findById(id).get();
-    produto.setHabilitado(Boolean.FALSE);
-    produto.setVersao(produto.getVersao() + 1);
-
-    repository.save(produto);
-  }
-}
->>>>>>> origin/alex
