@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
@@ -24,15 +25,20 @@ import lombok.Setter;
 @Table(name = "produto")
 @Where(clause = "habilitado = true")
 public class Produto extends EntidadeAuditavel {
+  @ManyToOne
+  private CategoriaProduto categoria;
+
+  @Column(nullable = false, length = 100)
+  private String titulo;
 
   @Column
-  private int CodigoDeBarrasDoProduto;
+  private String CodigoDeBarrasDoProduto;
 
   @Column
-  private String Descrição;
+  private String Descricao;
 
   @Column
-  private LocalDate DataDeFabricação;
+  private LocalDate DataDeFabricacao;
 
   @Column
   private LocalDate DataDeValidade;
@@ -41,7 +47,7 @@ public class Produto extends EntidadeAuditavel {
   private int Quantidade;
 
   @Column
-  private String Observações;
+  private String Observacoes;
 
   @Column
   private String AnexeAquiUmaOuMaisImagensDoProduto;

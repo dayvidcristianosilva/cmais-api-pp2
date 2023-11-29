@@ -15,11 +15,11 @@ import lombok.NoArgsConstructor;
 
 public class InstituicaoRequest {
 
-  private String NomeInstituicao;
+  private String nomeInstituicao;
 
   private String CNPJInstituicao;
 
-  private String EnderecoInstituicao;
+  private String enderecoInstituicao;
 
   private int TelefoneInstituicao;
 
@@ -48,9 +48,9 @@ public class InstituicaoRequest {
   public Instituicao build() {
 
     return Instituicao.builder()
-        .NomeInstituicao(NomeInstituicao)
+        .nomeInstituicao(nomeInstituicao)
         .CNPJInstituicao(CNPJInstituicao)
-        .EnderecoInstituicao(EnderecoInstituicao)
+        .enderecoInstituicao(enderecoInstituicao)
         .TelefoneInstituicao(TelefoneInstituicao)
         .DataConstituicao(DataConstituicao)
         .EmailInstituicao(EmailInstituicao)

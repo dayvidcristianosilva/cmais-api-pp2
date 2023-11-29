@@ -27,6 +27,5 @@ public abstract class EntidadeNegocio implements Serializable {
    @JsonIgnore
    @Column
    private Boolean habilitado;
-  
-}
 
+}

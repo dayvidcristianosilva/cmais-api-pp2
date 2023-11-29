@@ -32,6 +32,31 @@ public class InstituicaoService {
     return repository.findById(id).get();
   }
 
+  public List<Instituicao> filtrar(String enderecoInstituicao, String nomeInstituicao, Long idCategoria) {
+
+    List<Instituicao> listaProdutos = repository.findAll();
+
+    if ((enderecoInstituicao != null && !"".equals(enderecoInstituicao)) &&
+        (nomeInstituicao == null || "".equals(nomeInstituicao)) &&
+        (idCategoria == null)) {
+      listaProdutos = repository.consultarPorenderecoInstituicao(enderecoInstituicao);
+    } else if ((enderecoInstituicao == null || "".equals(enderecoInstituicao)) &&
+        (nomeInstituicao != null && !"".equals(nomeInstituicao)) &&
+        (idCategoria == null)) {
+      listaProdutos = repository.findByNomeInstituicaoContainingIgnoreCaseOrderByNomeInstituicaoAsc(nomeInstituicao);
+    } else if ((enderecoInstituicao == null || "".equals(enderecoInstituicao)) &&
+        (nomeInstituicao == null || "".equals(nomeInstituicao)) &&
+        (idCategoria != null)) {
+      listaProdutos = repository.consultarPorCategoria(idCategoria);
+    } else if ((enderecoInstituicao == null || "".equals(enderecoInstituicao)) &&
+        (nomeInstituicao != null && !"".equals(nomeInstituicao)) &&
+        (idCategoria != null)) {
+      listaProdutos = repository.consultarPornomeInstituicaoECategoria(nomeInstituicao, idCategoria);
+    }
+
+    return listaProdutos;
+  }
+
   @Transactional
   public void update(Long id, Instituicao instituicaoAlterado) {
 

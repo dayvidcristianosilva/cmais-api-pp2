@@ -13,29 +13,32 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProdutoRequest {
-  private int CodigoDeBarrasDoProduto;
+  private String titulo;
 
-  private String Descrição;
+  private String CodigoDeBarrasDoProduto;
 
-  private LocalDate DataDeFabricação;
+  private String Descricao;
+
+  private LocalDate DataDeFabricacao;
 
   private LocalDate DataDeValidade;
 
   private int Quantidade;
 
-  private String Observações;
+  private String Observacoes;
 
   private String AnexeAquiUmaOuMaisImagensDoProduto;
 
   public Produto build() {
 
     return Produto.builder()
+        .titulo(titulo)
         .CodigoDeBarrasDoProduto(CodigoDeBarrasDoProduto)
-        .Descrição(Descrição)
-        .DataDeFabricação(DataDeFabricação)
+        .Descricao(Descricao)
+        .DataDeFabricacao(DataDeFabricacao)
         .DataDeValidade(DataDeValidade)
         .Quantidade(Quantidade)
-        .Observações(Observações)
+        .Observacoes(Observacoes)
         .AnexeAquiUmaOuMaisImagensDoProduto(AnexeAquiUmaOuMaisImagensDoProduto)
         .build();
   }

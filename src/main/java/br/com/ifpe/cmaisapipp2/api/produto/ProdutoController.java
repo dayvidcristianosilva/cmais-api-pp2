@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.
 
     RestController;
@@ -62,6 +63,15 @@ public class ProdutoController {
   public Produto findById(@PathVariable Long id) {
 
     return produtoService.findById(id);
+  }
+
+  @PostMapping("/filtrar")
+  public List<Produto> filtrar(
+      @RequestParam(value = "CodigoDeBarrasDoProduto", required = false) String CodigoDeBarrasDoProduto,
+      @RequestParam(value = "Titulo", required = false) String Titulo,
+      @RequestParam(value = "idCategoria", required = false) Long idCategoria) {
+
+    return produtoService.filtrar(CodigoDeBarrasDoProduto, Titulo, idCategoria);
   }
 
   @PutMapping("/{id}")

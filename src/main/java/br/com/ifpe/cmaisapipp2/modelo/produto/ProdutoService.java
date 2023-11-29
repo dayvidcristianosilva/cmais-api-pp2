@@ -32,16 +32,42 @@ public class ProdutoService {
     return repository.findById(id).get();
   }
 
+  public List<Produto> filtrar(String CodigoDeBarrasDoProduto, String titulo, Long idCategoria) {
+
+    List<Produto> listaProdutos = repository.findAll();
+
+    if ((CodigoDeBarrasDoProduto != null && !"".equals(CodigoDeBarrasDoProduto)) &&
+        (titulo == null || "".equals(titulo)) &&
+        (idCategoria == null)) {
+      listaProdutos = repository.consultarPorCodigo(CodigoDeBarrasDoProduto);
+    } else if ((CodigoDeBarrasDoProduto == null || "".equals(CodigoDeBarrasDoProduto)) &&
+        (titulo != null && !"".equals(titulo)) &&
+        (idCategoria == null)) {
+      listaProdutos = repository.findByTituloContainingIgnoreCaseOrderByTituloAsc(titulo);
+    } else if ((CodigoDeBarrasDoProduto == null || "".equals(CodigoDeBarrasDoProduto)) &&
+        (titulo == null || "".equals(titulo)) &&
+        (idCategoria != null)) {
+      listaProdutos = repository.consultarPorCategoria(idCategoria);
+    } else if ((CodigoDeBarrasDoProduto == null || "".equals(CodigoDeBarrasDoProduto)) &&
+        (titulo != null && !"".equals(titulo)) &&
+        (idCategoria != null)) {
+      listaProdutos = repository.consultarPorTituloECategoria(titulo, idCategoria);
+    }
+
+    return listaProdutos;
+  }
+
   @Transactional
   public void update(Long id, Produto produtoAlterado) {
 
     Produto produto = repository.findById(id).get();
+    produto.setTitulo(produtoAlterado.getTitulo());
     produto.setCodigoDeBarrasDoProduto(produtoAlterado.getCodigoDeBarrasDoProduto());
-    produto.setDescrição(produtoAlterado.getDescrição());
-    produto.setDataDeFabricação(produtoAlterado.getDataDeFabricação());
+    produto.setDescricao(produtoAlterado.getDescricao());
+    produto.setDataDeFabricacao(produtoAlterado.getDataDeFabricacao());
     produto.setDataDeValidade(produtoAlterado.getDataDeValidade());
     produto.setQuantidade(produtoAlterado.getQuantidade());
-    produto.setObservações(produtoAlterado.getObservações());
+    produto.setObservacoes(produtoAlterado.getObservacoes());
     produto.setAnexeAquiUmaOuMaisImagensDoProduto(produtoAlterado.getAnexeAquiUmaOuMaisImagensDoProduto());
 
     produto.setVersao(produto.getVersao() + 1);
