@@ -37,7 +37,7 @@ public class InstituicaoService {
 
     Instituicao instituicao = repository.findById(id).get();
     instituicao.setNomeInstituicao(instituicaoAlterado.getNomeInstituicao());
-    instituicao.setCNPJInstituicao(instituicaoAlterado.getCNPJInstituicao());
+    instituicao.setCnpjInstituicao(instituicaoAlterado.getCnpjInstituicao());
     instituicao.setEnderecoInstituicao(instituicaoAlterado.getEnderecoInstituicao());
     instituicao.setTelefoneInstituicao(instituicaoAlterado.getTelefoneInstituicao());
     instituicao.setFinalidade(instituicaoAlterado.getFinalidade());

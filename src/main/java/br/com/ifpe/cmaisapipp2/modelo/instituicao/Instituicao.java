@@ -27,46 +27,48 @@ import lombok.Setter;
 public class Instituicao extends EntidadeAuditavel {
 
   @Column
-  private String NomeInstituicao;
+  private String nomeInstituicao;
 
   @Column
-  private String CNPJInstituicao;
+  private String cnpjInstituicao;
 
   @Column
-  private String EnderecoInstituicao;
+  private String enderecoInstituicao;
 
   @Column
-  private int TelefoneInstituicao;
-  @Column
-  private int Finalidade;
+  private String telefoneInstituicao;
 
   @Column
-  private String EmailInstituicao;
+  private String finalidade;
 
   @Column
-  private String RedesSociaisIntituicao;
+  private String emailInstituicao;
 
   @Column
-  private LocalDate DataConstituicao;
+  private String redesSociaisIntituicao;
 
   @Column
-  private String ComprovanteCadastro;
+  private LocalDate dataConstituicao;
 
   @Column
-  private String NomeResponsavel;
+  private String comprovanteCadastro;
 
   @Column
-  private int CpfReponsavel;
+  private String nomeResponsavel;
 
   @Column
-  private int TelefoneResponsavel;
+  private String cpfReponsavel;
 
   @Column
-  private String EmailResponsavel;
+  private String telefoneResponsavel;
 
   @Column
-  private String CargoReponsavel;
+  private String emailResponsavel;
 
   @Column
-  private String SenhaAcesso;
+  private String cargoReponsavel;
+
+  @Column
+  private String senhaAcesso;
+
 }

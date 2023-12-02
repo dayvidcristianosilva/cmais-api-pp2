@@ -40,6 +40,7 @@ public class ProdutoService {
             produto.setDataDeValidade(produtoAlterado.getDataDeValidade());
             produto.setQuantidade(produtoAlterado.getQuantidade());
             produto.setObservacao(produtoAlterado.getObservacao());
+            produto.setImagem(produtoAlterado.getImagem());
 
             produto.setVersao(produto.getVersao() + 1);
             repository.save(produto);

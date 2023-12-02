@@ -43,5 +43,7 @@ public class Produto extends EntidadeAuditavel {
     @Column
     private String observacao;
 
+    @Column
+    private String imagem;
 
 }

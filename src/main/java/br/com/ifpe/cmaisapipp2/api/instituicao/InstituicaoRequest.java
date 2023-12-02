@@ -2,6 +2,8 @@ package br.com.ifpe.cmaisapipp2.api.instituicao;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import br.com.ifpe.cmaisapipp2.modelo.instituicao.Instituicao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,53 +17,52 @@ import lombok.NoArgsConstructor;
 
 public class InstituicaoRequest {
 
-  private String NomeInstituicao;
+  private String nomeInstituicao;
 
-  private String CNPJInstituicao;
+  private String cnpjInstituicao;
 
-  private String EnderecoInstituicao;
+  private String enderecoInstituicao;
 
-  private int TelefoneInstituicao;
+  private String telefoneInstituicao;
 
-  private int Finalidade;
+  private String finalidade;
 
-  private LocalDate DataConstituicao;
+  @JsonFormat(pattern = "dd/MM/yyyy")
+  private LocalDate dataConstituicao;
 
-  private String EmailInstituicao;
+  private String emailInstituicao;
 
-  private String RedesSociaisIntituicao;
+  private String redesSociaisIntituicao;
 
-  private String ComprovanteCadastro;
+  private String nomeResponsavel;
 
-  private String NomeResponsavel;
+  private String cpfReponsavel;
 
-  private int CpfReponsavel;
+  private String telefoneResponsavel;
 
-  private int TelefoneResponsavel;
+  private String emailResponsavel;
 
-  private String EmailResponsavel;
+  private String cargoReponsavel;
 
-  private String CargoReponsavel;
-
-  private String SenhaAcesso;
+  private String senhaAcesso;
 
   public Instituicao build() {
 
     return Instituicao.builder()
-        .NomeInstituicao(NomeInstituicao)
-        .CNPJInstituicao(CNPJInstituicao)
-        .EnderecoInstituicao(EnderecoInstituicao)
-        .TelefoneInstituicao(TelefoneInstituicao)
-        .DataConstituicao(DataConstituicao)
-        .EmailInstituicao(EmailInstituicao)
-        .RedesSociaisIntituicao(RedesSociaisIntituicao)
-        .ComprovanteCadastro(ComprovanteCadastro)
-        .NomeResponsavel(NomeResponsavel)
-        .CpfReponsavel(CpfReponsavel)
-        .TelefoneResponsavel(TelefoneResponsavel)
-        .EmailResponsavel(EmailResponsavel)
-        .CargoReponsavel(CargoReponsavel)
-        .SenhaAcesso(SenhaAcesso)
+        .nomeInstituicao(nomeInstituicao)
+        .cnpjInstituicao(cnpjInstituicao)
+        .enderecoInstituicao(enderecoInstituicao)
+        .telefoneInstituicao(telefoneInstituicao)
+        .dataConstituicao(dataConstituicao)
+        .emailInstituicao(emailInstituicao)
+        .redesSociaisIntituicao(redesSociaisIntituicao)
+        //.ComprovanteCadastro(ComprovanteCadastro)
+        .nomeResponsavel(nomeResponsavel)
+        .cpfReponsavel(cpfReponsavel)
+        .telefoneResponsavel(telefoneResponsavel)
+        .emailResponsavel(emailResponsavel)
+        .cargoReponsavel(cargoReponsavel)
+        .senhaAcesso(senhaAcesso)
         .build();
   }
 

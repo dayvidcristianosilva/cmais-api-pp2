@@ -46,4 +46,5 @@ public class Mercado extends EntidadeAuditavel {
 
     @Column
     private String SenhaDeAcesso;
+
 }

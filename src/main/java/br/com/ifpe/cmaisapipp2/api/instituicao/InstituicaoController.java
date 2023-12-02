@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.
 
     RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ifpe.cmaisapipp2.modelo.instituicao.Instituicao;
 import br.com.ifpe.cmaisapipp2.modelo.instituicao.InstituicaoService;
+import br.com.ifpe.cmaisapipp2.util.Util;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -31,21 +34,35 @@ import io.swagger.annotations.ApiResponses;
 public class InstituicaoController {
 
   @Autowired
-  private InstituicaoService ongService;
+  private InstituicaoService instituicaoService;
 
   @ApiOperation(value = "Serviço responsável por salvar uma ong no sistema.")
   @PostMapping
   public ResponseEntity<Instituicao> save(@RequestBody @Valid InstituicaoRequest request) {
 
-    Instituicao ong = ongService.save(request.build());
-    return new ResponseEntity<Instituicao>(ong, HttpStatus.CREATED);
+    Instituicao instituicao = instituicaoService.save(request.build());
+    return new ResponseEntity<Instituicao>(instituicao, HttpStatus.CREATED);
   }
+
+  @PutMapping("/adicionarimagem/{id}")
+    public ResponseEntity<Instituicao> adicionarImagem(@PathVariable("id") Long id,
+            @RequestParam(value = "arquivo", required = true) MultipartFile arquivo) {
+
+        Instituicao instituicao = instituicaoService.findById(id);
+
+        if (Util.fazerUploadImagem(arquivo)) {
+            instituicao.setComprovanteCadastro(Util.obterMomentoAtual() + " - " + arquivo.getOriginalFilename());
+        }
+
+        instituicaoService.update(id, instituicao);
+        return ResponseEntity.ok().build();
+    }
 
   @ApiOperation(value = "Serviço responsável por listar todas as instituição do sistema.")
   @GetMapping
   public List<Instituicao> findAll() {
 
-    return ongService.findAll();
+    return instituicaoService.findAll();
   }
 
   @ApiOperation(value = "Serviço responsável por obter uma instituição referente ao Id passado na URL.")
@@ -59,20 +76,20 @@ public class InstituicaoController {
   @GetMapping("/{id}")
   public Instituicao findById(@PathVariable Long id) {
 
-    return ongService.findById(id);
+    return instituicaoService.findById(id);
   }
 
   @PutMapping("/{id}")
   public ResponseEntity<Instituicao> update(@PathVariable("id") Long id, @RequestBody InstituicaoRequest request) {
 
-    ongService.update(id, request.build());
+    instituicaoService.update(id, request.build());
     return ResponseEntity.ok().build();
   }
 
   @DeleteMapping("/{id}")
   public ResponseEntity<Void> delete(@PathVariable Long id) {
 
-    ongService.delete(id);
+    instituicaoService.delete(id);
     return ResponseEntity.ok().build();
   }
 
