@@ -33,7 +33,7 @@ public class Mercado extends EntidadeAuditavel {
   private String tipoEmpreendimento;
 
   @Column
-  private int telefoneContato;
+  private String telefoneContato;
 
   @Column
   private String endereco;
@@ -48,6 +48,6 @@ public class Mercado extends EntidadeAuditavel {
   private String cargoResponsavel;
 
   @Column
-  private String SenhaDeAcesso;
+  private String senhaDeAcesso;
 
 }

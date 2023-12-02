@@ -42,11 +42,11 @@ public class InstituicaoService {
     instituicao.setTelefoneInstituicao(instituicaoAlterado.getTelefoneInstituicao());
     instituicao.setFinalidade(instituicaoAlterado.getFinalidade());
     instituicao.setEmailInstituicao(instituicaoAlterado.getEmailInstituicao());
-    instituicao.setRedesSociaisIntituicao(instituicaoAlterado.getRedesSociaisIntituicao());
+    instituicao.setRedesSociaisInstituicao(instituicaoAlterado.getRedesSociaisInstituicao());
     instituicao.setDataConstituicao(instituicaoAlterado.getDataConstituicao());
-    instituicao.setComprovanteCadastro(instituicaoAlterado.getComprovanteCadastro());
+    //instituicao.setComprovanteCadastro(instituicaoAlterado.getComprovanteCadastro());
     instituicao.setNomeResponsavel(instituicaoAlterado.getNomeResponsavel());
-    instituicao.setCpfReponsavel(instituicaoAlterado.getCpfReponsavel());
+    instituicao.setCpfResponsavel(instituicaoAlterado.getCpfResponsavel());
     instituicao.setTelefoneResponsavel(instituicaoAlterado.getTelefoneResponsavel());
     instituicao.setEmailResponsavel(instituicaoAlterado.getEmailResponsavel());
     instituicao.setSenhaAcesso(instituicaoAlterado.getSenhaAcesso());

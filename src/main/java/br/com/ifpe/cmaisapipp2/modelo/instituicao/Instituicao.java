@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
+//import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ifpe.cmaisapipp2.util.entity.EntidadeAuditavel;
 import lombok.AllArgsConstructor;
@@ -27,47 +28,47 @@ import lombok.Setter;
 public class Instituicao extends EntidadeAuditavel {
 
   @Column
-  private String NomeInstituicao;
+  private String nomeInstituicao;
 
   @Column
-  private String CnpjInstituicao;
+  private String cnpjInstituicao;
 
   @Column
-  private String EnderecoInstituicao;
+  private String enderecoInstituicao;
 
   @Column
-  private String TelefoneInstituicao;
+  private String telefoneInstituicao;
 
   @Column
-  private String Finalidade;
+  private String finalidade;
 
   @Column
-  private LocalDate DataConstituicao;
+  private LocalDate dataConstituicao;
 
   @Column
-  private String EmailInstituicao;
+  private String emailInstituicao;
 
   @Column
-  private String RedesSociaisIntituicao;
+  private String redesSociaisInstituicao;
+
+  //@Column
+  //private MultipartFile comprovanteCadastro;
 
   @Column
-  private String ComprovanteCadastro;
+  private String nomeResponsavel;
 
   @Column
-  private String NomeResponsavel;
+  private String cpfResponsavel;
 
   @Column
-  private String CpfReponsavel;
+  private String telefoneResponsavel;
 
   @Column
-  private String TelefoneResponsavel;
+  private String emailResponsavel;
 
   @Column
-  private String EmailResponsavel;
+  private String cargoResponsavel;
 
   @Column
-  private String CargoReponsavel;
-
-  @Column
-  private String SenhaAcesso;
+  private String senhaAcesso;
 }

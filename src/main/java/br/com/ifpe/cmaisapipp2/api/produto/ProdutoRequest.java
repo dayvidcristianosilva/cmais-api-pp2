@@ -2,6 +2,8 @@ package br.com.ifpe.cmaisapipp2.api.produto;
 
 import java.time.LocalDate;
 
+//import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.ifpe.cmaisapipp2.modelo.produto.Produto;
@@ -31,7 +33,7 @@ public class ProdutoRequest {
 
   private String observacoes;
 
-  private String anexoImagem;
+  //private MultipartFile anexoImagem;
 
   public Produto build() {
 
@@ -40,7 +42,8 @@ public class ProdutoRequest {
         .descricao(descricao)
         .dataDeFabricacao(dataDeFabricação)
         .dataDeValidade(dataDeValidade)
-        .quantidade(anexoImagem)
+        .quantidade(quantidade)
+        //.anexoImagem(anexoImagem)
         .observacoes(observacoes)
         .build();
   }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
+//import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ifpe.cmaisapipp2.util.entity.EntidadeAuditavel;
 import lombok.AllArgsConstructor;
@@ -41,6 +42,9 @@ public class Produto extends EntidadeAuditavel {
 
   @Column
   private String quantidade;
+
+  //@Column
+  //private MultipartFile anexoImagem;
 
   @Column
   private String observacoes;
