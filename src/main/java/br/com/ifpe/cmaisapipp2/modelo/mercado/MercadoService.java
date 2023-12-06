@@ -16,6 +16,7 @@ public class MercadoService {
 
     @Transactional
     public Mercado save(Mercado mercado) {
+        // Validação de entrada pode ser adicionada aqui, se necessário
         mercado.setHabilitado(Boolean.TRUE);
         mercado.setVersao(1L);
         mercado.setDataCriacao(LocalDate.now());
@@ -30,21 +31,41 @@ public class MercadoService {
         return repository.findById(id).orElse(null);
     }
 
+    public List<Mercado> filtrar(String nomeEmpreendimento, String endereco) {
+        List<Mercado> listaMercados;
+
+        if ((nomeEmpreendimento != null && !nomeEmpreendimento.isEmpty()) &&
+            (endereco != null && !endereco.isEmpty())) {
+            listaMercados = repository.findByNomeEmpreendimentoContainingIgnoreCaseOrderByNomeEmpreendimentoAsc(nomeEmpreendimento);
+        } else if ((nomeEmpreendimento == null || nomeEmpreendimento.isEmpty()) &&
+                   (endereco != null && !endereco.isEmpty())) {
+            listaMercados = repository.consultarPorendereco(endereco);
+        } else {
+            listaMercados = repository.findAll();
+        }
+
+        return listaMercados;
+    }
+
     @Transactional
     public void update(Long id, Mercado mercadoAlterado) {
         Mercado mercado = repository.findById(id).orElse(null);
         if (mercado != null) {
-            mercado.setNomeEmpreendimento(mercadoAlterado.getNomeEmpreendimento());
-            mercado.setTipoEmpreendimento(mercadoAlterado.getTipoEmpreendimento());
-            mercado.setTelefoneContato(mercadoAlterado.getTelefoneContato());
-            mercado.setEndereco(mercadoAlterado.getEndereco());
-            mercado.setRedesSociais(mercadoAlterado.getRedesSociais());
-            mercado.setNomeCompletoResponsavel(mercadoAlterado.getNomeCompletoResponsavel());
-            mercado.setCargoResponsavel(mercadoAlterado.getCargoResponsavel());
-            mercado.setSenhaDeAcesso(mercadoAlterado.getSenhaDeAcesso());
+            if (mercado.getVersao().equals(mercadoAlterado.getVersao())) {
+                mercado.setNomeEmpreendimento(mercadoAlterado.getNomeEmpreendimento());
+                mercado.setTipoEmpreendimento(mercadoAlterado.getTipoEmpreendimento());
+                mercado.setTelefoneContato(mercadoAlterado.getTelefoneContato());
+                mercado.setEndereco(mercadoAlterado.getEndereco());
+                mercado.setRedesSociais(mercadoAlterado.getRedesSociais());
+                mercado.setNomeCompletoResponsavel(mercadoAlterado.getNomeCompletoResponsavel());
+                mercado.setCargoResponsavel(mercadoAlterado.getCargoResponsavel());
+                mercado.setSenhaDeAcesso(mercadoAlterado.getSenhaDeAcesso());
 
-            mercado.setVersao(mercado.getVersao() + 1);
-            repository.save(mercado);
+                mercado.setVersao(mercado.getVersao() + 1);
+                repository.save(mercado);
+            } else {
+                throw new IllegalStateException("O objeto foi modificado por outra transação. Atualização não permitida.");
+            }
         }
     }
 
