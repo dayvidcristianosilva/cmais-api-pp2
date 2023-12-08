@@ -33,7 +33,7 @@ public static boolean fazerUploadImagem(MultipartFile imagem) {
 
 	    try {
 		// Criando o diretório para armazenar o arquivo
-		String workspaceProjeto = "C:\\Users\\Aluno\\Desktop\\Dayvid Cristiano\\cmais-api-pp2";
+		String workspaceProjeto = "C:\\Users\\Aluno\\Desktop\\Dayvid Cristiano\\ProjetoePrática2\\cmais-api-pp2";
 		File dir = new File(workspaceProjeto + "\\src\\main\\resources\\arquivos");
 		if (!dir.exists()) {
 		    dir.mkdirs();
