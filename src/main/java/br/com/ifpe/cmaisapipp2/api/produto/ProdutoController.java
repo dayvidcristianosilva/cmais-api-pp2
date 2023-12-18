@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ifpe.cmaisapipp2.modelo.produto.Produto;
 import br.com.ifpe.cmaisapipp2.modelo.produto.ProdutoService;
+import br.com.ifpe.cmaisapipp2.util.entity.Util;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -27,7 +29,6 @@ import io.swagger.annotations.ApiResponses;
 @RestController
 @RequestMapping("/api/produto")
 @CrossOrigin
-
 public class ProdutoController {
 
     @Autowired
@@ -36,8 +37,23 @@ public class ProdutoController {
     @ApiOperation(value = "Serviço responsável por salvar um produto no sistema.")
     @PostMapping
     public ResponseEntity<Produto> save(@RequestBody @Valid ProdutoRequest request) {
-        Produto produto = produtoService.save(request.build());
-        return new ResponseEntity<Produto>(produto, HttpStatus.CREATED);
+
+        Produto produtoSalvo = produtoService.save(request.build());
+        return new ResponseEntity<>(produtoSalvo, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/adicionarimagem/{id}")
+    public ResponseEntity<Produto> adicionarImagem(@PathVariable("id") Long id,
+            @RequestParam(value = "arquivo", required = true) MultipartFile arquivo) {
+
+        Produto produto = produtoService.findById(id);
+
+        if (Util.fazerUploadImagem(arquivo)) {
+            produto.setImagem(Util.obterMomentoAtual() + " - " + arquivo.getOriginalFilename());
+        }
+
+        produtoService.update(id, produto);
+        return ResponseEntity.ok().build();
     }
 
     @ApiOperation(value = "Serviço responsável por listar todos os produtos do sistema.")
@@ -48,13 +64,12 @@ public class ProdutoController {
 
     @ApiOperation(value = "Serviço responsável por obter um produto referente ao Id passado na URL.")
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Retorna  o produto."),
+            @ApiResponse(code = 200, message = "Retorna o produto."),
             @ApiResponse(code = 401, message = "Acesso não autorizado."),
             @ApiResponse(code = 403, message = "Você não tem permissão para acessar este recurso."),
             @ApiResponse(code = 404, message = "Não foi encontrado um registro para o Id informado."),
             @ApiResponse(code = 500, message = "Foi gerado um erro no servidor."),
     })
-
     @GetMapping("/{id}")
     public Produto findById(@PathVariable Long id) {
         return produtoService.findById(id);

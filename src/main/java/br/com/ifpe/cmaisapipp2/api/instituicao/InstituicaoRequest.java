@@ -2,8 +2,12 @@ package br.com.ifpe.cmaisapipp2.api.instituicao;
 
 import java.time.LocalDate;
 
-//import org.springframework.web.multipart.MultipartFile;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import br.com.ifpe.cmaisapipp2.modelo.acesso.Usuario;
 import br.com.ifpe.cmaisapipp2.modelo.instituicao.Instituicao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,44 +31,54 @@ public class InstituicaoRequest {
 
   private String finalidade;
 
+  @JsonFormat(pattern = "dd/MM/yyyy")
   private LocalDate dataConstituicao;
 
+  @NotBlank(message = "O e-mail é de preenchimento obrigatório")
+  @Email
   private String emailInstituicao;
 
-  private String redesSociaisInstituicao;
-
-  //private MultipartFile comprovanteCadastro;
+  private String redesSociaisIntituicao;
 
   private String nomeResponsavel;
 
-  private String cpfResponsavel;
+  private String cpfReponsavel;
 
   private String telefoneResponsavel;
 
   private String emailResponsavel;
 
-  private String cargoResponsavel;
+  private String cargoReponsavel;
 
+  @NotBlank(message = "A senha é de preenchimento obrigatório")
   private String senhaAcesso;
 
   public Instituicao build() {
 
     return Instituicao.builder()
+        .usuario(buildUsuario())
         .nomeInstituicao(nomeInstituicao)
         .cnpjInstituicao(cnpjInstituicao)
         .enderecoInstituicao(enderecoInstituicao)
         .telefoneInstituicao(telefoneInstituicao)
-        .finalidade(finalidade)
         .dataConstituicao(dataConstituicao)
         .emailInstituicao(emailInstituicao)
-        .redesSociaisInstituicao(redesSociaisInstituicao)
-        //.comprovanteCadastro(comprovanteCadastro)
+        .redesSociaisIntituicao(redesSociaisIntituicao)
         .nomeResponsavel(nomeResponsavel)
-        .cpfResponsavel(cpfResponsavel)
+        .cpfReponsavel(cpfReponsavel)
         .telefoneResponsavel(telefoneResponsavel)
         .emailResponsavel(emailResponsavel)
-        .cargoResponsavel(cargoResponsavel)
+        .cargoReponsavel(cargoReponsavel)
         .senhaAcesso(senhaAcesso)
+        .build();
+  }
+
+  public Usuario buildUsuario() {
+
+    return Usuario.builder()
+        .username(emailInstituicao)
+        .password(senhaAcesso)
+        .roles(java.util.Arrays.asList(Usuario.ROLE_CLIENTE))
         .build();
   }
 

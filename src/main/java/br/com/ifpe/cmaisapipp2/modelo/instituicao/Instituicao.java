@@ -4,17 +4,22 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
-//import org.springframework.web.multipart.MultipartFile;
 
+import br.com.ifpe.cmaisapipp2.modelo.acesso.Usuario;
 import br.com.ifpe.cmaisapipp2.util.entity.EntidadeAuditavel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Builder
 @Getter
@@ -26,6 +31,10 @@ import lombok.Setter;
 @Where(clause = "habilitado = true")
 
 public class Instituicao extends EntidadeAuditavel {
+
+  @ManyToOne
+  @JoinColumn(nullable = false)
+  private Usuario usuario;
 
   @Column
   private String nomeInstituicao;
@@ -43,22 +52,22 @@ public class Instituicao extends EntidadeAuditavel {
   private String finalidade;
 
   @Column
-  private LocalDate dataConstituicao;
-
-  @Column
   private String emailInstituicao;
 
   @Column
-  private String redesSociaisInstituicao;
+  private String redesSociaisIntituicao;
 
-  //@Column
-  //private MultipartFile comprovanteCadastro;
+  @Column
+  private LocalDate dataConstituicao;
+
+  @Column
+  private String comprovanteCadastro;
 
   @Column
   private String nomeResponsavel;
 
   @Column
-  private String cpfResponsavel;
+  private String cpfReponsavel;
 
   @Column
   private String telefoneResponsavel;
@@ -67,8 +76,10 @@ public class Instituicao extends EntidadeAuditavel {
   private String emailResponsavel;
 
   @Column
-  private String cargoResponsavel;
+  private String cargoReponsavel;
 
+  @Fetch(FetchMode.SUBSELECT)
   @Column
   private String senhaAcesso;
+
 }

@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Where;
-//import org.springframework.web.multipart.MultipartFile;
 
 import br.com.ifpe.cmaisapipp2.util.entity.EntidadeAuditavel;
 import lombok.AllArgsConstructor;
@@ -19,34 +18,32 @@ import lombok.Setter;
 @Entity
 @Table(name = "Produto")
 @Where(clause = "habilitado = true")
-
 @Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Produto extends EntidadeAuditavel {
 
-  @Column
-  private String codigoDeBarras;
+    @Column
+    private String codigoDeBarras;
 
-  @Column
-  private String descricao;
+    @Column
+    private String descricao;
 
-  @Column
-  private LocalDate dataDeFabricacao;
+    @Column
+    private LocalDate dataDeFabricacao;
 
-  @Column
-  private LocalDate dataDeValidade;
+    @Column
+    private LocalDate dataDeValidade;
 
-  @Column
-  private String quantidade;
+    @Column
+    private String quantidade;
 
-  //@Column
-  //private MultipartFile anexoImagem;
+    @Column
+    private String observacao;
 
-  @Column
-  private String observacoes;
+    @Column
+    private String imagem;
 
 }

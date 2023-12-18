@@ -8,14 +8,20 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.ifpe.cmaisapipp2.modelo.acesso.UsuarioService;
+
 @Service
 public class InstituicaoService {
+  @Autowired
+  private UsuarioService usuarioService;
+  
   @Autowired
   private InstituicaoRepository repository;
 
   @Transactional
   public Instituicao save(Instituicao instituicao) {
 
+    usuarioService.save(instituicao.getUsuario());
     instituicao.setHabilitado(Boolean.TRUE);
     instituicao.setVersao(1L);
     instituicao.setDataCriacao(LocalDate.now());
@@ -42,11 +48,11 @@ public class InstituicaoService {
     instituicao.setTelefoneInstituicao(instituicaoAlterado.getTelefoneInstituicao());
     instituicao.setFinalidade(instituicaoAlterado.getFinalidade());
     instituicao.setEmailInstituicao(instituicaoAlterado.getEmailInstituicao());
-    instituicao.setRedesSociaisInstituicao(instituicaoAlterado.getRedesSociaisInstituicao());
+    instituicao.setRedesSociaisIntituicao(instituicaoAlterado.getRedesSociaisIntituicao());
     instituicao.setDataConstituicao(instituicaoAlterado.getDataConstituicao());
-    //instituicao.setComprovanteCadastro(instituicaoAlterado.getComprovanteCadastro());
+    instituicao.setComprovanteCadastro(instituicaoAlterado.getComprovanteCadastro());
     instituicao.setNomeResponsavel(instituicaoAlterado.getNomeResponsavel());
-    instituicao.setCpfResponsavel(instituicaoAlterado.getCpfResponsavel());
+    instituicao.setCpfReponsavel(instituicaoAlterado.getCpfReponsavel());
     instituicao.setTelefoneResponsavel(instituicaoAlterado.getTelefoneResponsavel());
     instituicao.setEmailResponsavel(instituicaoAlterado.getEmailResponsavel());
     instituicao.setSenhaAcesso(instituicaoAlterado.getSenhaAcesso());

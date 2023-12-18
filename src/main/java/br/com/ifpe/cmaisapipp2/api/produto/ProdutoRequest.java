@@ -2,8 +2,6 @@ package br.com.ifpe.cmaisapipp2.api.produto;
 
 import java.time.LocalDate;
 
-//import org.springframework.web.multipart.MultipartFile;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import br.com.ifpe.cmaisapipp2.modelo.produto.Produto;
@@ -16,35 +14,30 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class ProdutoRequest {
 
-  private String codigoDeBarras;
+    private String codigoDeBarras;
 
-  private String descricao;
+    private String descricao;
 
-  @JsonFormat(pattern = "dd/MM/yyyy")
-  private LocalDate dataDeFabricação;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataDeFabricacao;
 
-  @JsonFormat(pattern = "dd/MM/yyyy")
-  private LocalDate dataDeValidade;
+    @JsonFormat(pattern = "dd/MM/yyyy")
+    private LocalDate dataDeValidade;
 
-  private String quantidade;
+    private String quantidade;
 
-  private String observacoes;
+    private String observacao;
 
-  //private MultipartFile anexoImagem;
-
-  public Produto build() {
-
-    return Produto.builder()
-        .codigoDeBarras(codigoDeBarras)
-        .descricao(descricao)
-        .dataDeFabricacao(dataDeFabricação)
-        .dataDeValidade(dataDeValidade)
-        .quantidade(quantidade)
-        //.anexoImagem(anexoImagem)
-        .observacoes(observacoes)
-        .build();
-  }
+    public Produto build() {
+        return Produto.builder()
+                .codigoDeBarras(codigoDeBarras)
+                .descricao(descricao)
+                .dataDeFabricacao(dataDeFabricacao)
+                .dataDeValidade(dataDeValidade)
+                .quantidade(quantidade)
+                .observacao(observacao)
+                .build();
+    }
 }
